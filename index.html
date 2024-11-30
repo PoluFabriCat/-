@@ -1,94 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-<title>Анкеты</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<style>
-body {
-  margin: 0; /* Убираем отступы body */
-  overflow-x: hidden; /* Предотвращает горизонтальную прокрутку */
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моя страница</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            background-color: #fdf5f5;
+            display: grid; /* Делаем body grid-контейнером */
+            place-items: center; /* Центрируем содержимое */
+            min-height: 100vh;
+        }
 
-.container {
-  display: flex;
-  overflow: hidden; /* Скрываем все полосы прокрутки */
-  white-space: nowrap; /* Предотвращает перенос строк */
-}
-
-.form {
-  display: inline-block; /* Делает анкеты инлайн элементами */
-  width: 100vw; /* Занимает всю ширину экрана */
-  height: 100vh; /* Занимает всю высоту экрана */
-  padding: 20px;
-  box-sizing: border-box; /* Включает padding в общую ширину */
-  border: 1px solid #ccc;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-  transform: translateX(0); /* Начальное положение */
-  transition: transform 0.3s ease-in-out; /* Плавное переключение */
-}
-
-/* Скрытие полос прокрутки (для разных браузеров) */
-.container::-webkit-scrollbar {
-  display: none;
-}
-.container {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
-</style>
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            /*  Убрали max-width  */
+        }
+    </style>
 </head>
 <body>
-
-<div class="container">
-  <div class="form">
-    <h2>Анкета 1</h2>
-    <label for="name1">Имя:</label><br>
-    <input type="text" id="name1" name="name1"><br>
-    <label for="email1">Email:</label><br>
-    <input type="email" id="email1" name="email1"><br>
-  </div>
-  <div class="form">
-    <h2>Анкета 2</h2>
-    <label for="name2">Имя:</label><br>
-    <input type="text" id="name2" name="name2"><br>
-    <label for="email2">Email:</label><br>
-    <input type="email" id="email2" name="email2"><br>
-  </div>
-  <div class="form">
-    <h2>Анкета 3</h2>
-    <label for="name3">Имя:</label><br>
-    <input type="text" id="name3" name="name3"><br>
-    <label for="email3">Email:</label><br>
-    <input type="email" id="email3" name="email3"><br>
-  </div>
-</div>
-
-<script src="https://hammerjs.github.io/dist/hammer.js"></script>
-<script>
-  const container = document.querySelector('.container');
-  const forms = document.querySelectorAll('.form');
-  let currentIndex = 0;
-
-  const translateForm = (index) => {
-    forms.forEach((form, i) => {
-      form.style.transform = `translateX(${ (i - index) * 100 }vw)`;
-    });
-  };
-
-  const hammer = new Hammer(container);
-  hammer.on('swipeleft', () => {
-    currentIndex = Math.min(currentIndex + 1, forms.length - 1);
-    translateForm(currentIndex);
-  });
-  hammer.on('swiperight', () => {
-    currentIndex = Math.max(currentIndex - 1, 0);
-    translateForm(currentIndex);
-  });
-
-  // Управление жестами для лучшего восприятия на мобильных
-  hammer.get('swipe').set({ direction: Hammer.DIRECTION_HORIZONTAL });
-</script>
-
+    <div class="container">
+        <div class="content">
+          <!-- Добавить здесь свой контент -->
+        </div>
+    </div>
 </body>
 </html>
