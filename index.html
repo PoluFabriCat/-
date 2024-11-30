@@ -1,33 +1,84 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Моя страница</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: sans-serif;
-            background-color: #fdf5f5;
-            display: grid; /* Делаем body grid-контейнером */
-            place-items: center; /* Центрируем содержимое */
-            min-height: 100vh;
-        }
+<title>Анкеты</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  overflow-x: hidden; /* Предотвращает горизонтальную прокрутку */
+  font-family: sans-serif;
+  text-align: center;
+  background-color: #FFE8DF;
+  border-radius: 10px;
+  touch-action: manipulation;
+  user-select: none;
+  height: 100vh;
+  margin: 0;
+}
 
-        .container {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            /*  Убрали max-width  */
-        }
-    </style>
+.container {
+  display: flex;
+  overflow-x: auto; /* Разрешает горизонтальную прокрутку */
+  -webkit-overflow-scrolling: touch; /* Улучшает плавность прокрутки на мобильных устройствах */
+}
+
+.form {
+  width: 90%;
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  height: calc(100vh - 13px);
+  min-width: 300px; /* Минимальная ширина анкеты */
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <div class="content">
-          <!-- Добавить здесь свой контент -->
-        </div>
-    </div>
+
+<div class="container">
+  <div class="form">
+    <h2>Анкета 1</h2>
+    <label for="name1">Имя:</label><br>
+    <input type="text" id="name1" name="name1"><br>
+    <label for="email1">Email:</label><br>
+    <input type="email" id="email1" name="email1"><br>
+  </div>
+  <div class="form">
+    <h2>Анкета 2</h2>
+    <label for="name2">Имя:</label><br>
+    <input type="text" id="name2" name="name2"><br>
+    <label for="email2">Email:</label><br>
+    <input type="email" id="email2" name="email2"><br>
+  </div>
+  <div class="form">
+    <h2>Анкета 3</h2>
+    <label for="name3">Имя:</label><br>
+    <input type="text" id="name3" name="name3"><br>
+    <label for="email3">Email:</label><br>
+    <input type="email" id="email3" name="email3"><br>
+  </div>
+</div>
+
+<script src="https://hammerjs.github.io/dist/hammer.js"></script> <!-- Подключение Hammer.js -->
+<script>
+  const container = document.querySelector('.container');
+  const hammer = new Hammer(container);
+
+  hammer.on('swipeleft', () => {
+    if (container.scrollLeft < container.scrollWidth - container.offsetWidth) {
+      container.scrollLeft += container.offsetWidth;
+    }
+  });
+
+  hammer.on('swiperight', () => {
+    if (container.scrollLeft > 0) {
+      container.scrollLeft -= container.offsetWidth;
+    }
+  });
+</script>
+
 </body>
 </html>
