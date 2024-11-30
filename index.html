@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body {
-  overflow-x: hidden; /* Предотвращает горизонтальную прокрутку */
+  overflow-x: hidden;
   font-family: sans-serif;
   text-align: center;
   background-color: #FFE8DF;
@@ -19,8 +19,8 @@ body {
 
 .container {
   display: flex;
-  overflow-x: auto; /* Разрешает горизонтальную прокрутку */
-  -webkit-overflow-scrolling: touch; /* Улучшает плавность прокрутки на мобильных устройствах */
+  overflow-x: hidden; /* Hide native scrollbar */
+  transition: transform 0.3s ease-in-out; /* Smooth transition for scrolling */
 }
 
 .form {
@@ -32,6 +32,7 @@ body {
   height: calc(90vh - 13px);
   border: 1px solid #ccc;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+
 }
 </style>
 </head>
@@ -61,22 +62,40 @@ body {
   </div>
 </div>
 
-<script src="https://hammerjs.github.io/dist/hammer.js"></script> <!-- Подключение Hammer.js -->
 <script>
-  const container = document.querySelector('.container');
-  const hammer = new Hammer(container);
+const container = document.querySelector('.container');
+const forms = document.querySelectorAll('.form');
+let currentFormIndex = 0;
+const formWidth = forms[0].offsetWidth; // Get width of a single form
 
-  hammer.on('swipeleft', () => {
-    if (container.scrollLeft < container.scrollWidth - container.offsetWidth) {
-      container.scrollLeft += container.offsetWidth;
-    }
-  });
+function scrollToForm(index) {
+  if (index >= 0 && index < forms.length) {
+    container.style.transform = `translateX(-${index * formWidth}px)`;
+    currentFormIndex = index;
+  }
+}
 
-  hammer.on('swiperight', () => {
-    if (container.scrollLeft > 0) {
-      container.scrollLeft -= container.offsetWidth;
+// Swipe handling (you can replace this with any other navigation method)
+container.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+});
+
+container.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+});
+
+
+container.addEventListener('touchend', (e) => {
+    let endX = e.changedTouches[0].clientX;
+    let diffX = startX - endX;
+
+    if (diffX > 50) {
+        scrollToForm(currentFormIndex + 1);
+    } else if (diffX < -50) {
+        scrollToForm(currentFormIndex - 1);
     }
-  });
+});
+
 </script>
 
 </body>
