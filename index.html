@@ -1,102 +1,606 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-<title>Анкеты</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  overflow-x: hidden;
-  font-family: sans-serif;
-  text-align: center;
-  background-color: #FFE8DF;
-  border-radius: 10px;
-  touch-action: manipulation;
-  user-select: none;
-  height: 100vh;
-  margin: 0;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Полины интрижки ✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+        }
 
-.container {
-  display: flex;
-  overflow-x: hidden; /* Hide native scrollbar */
-  transition: transform 0.3s ease-in-out; /* Smooth transition for scrolling */
-}
+        body {
+            background: linear-gradient(145deg, #f9eef7 0%, #f1d9e6 100%);
+            min-height: 100vh;
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-.form {
-  width: 90%;
-  margin: 10px;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: #FFFFFF;
-  height: calc(90vh - 13px);
-  border: 1px solid #ccc;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        /* главная карточка */
+        .app-container {
+            max-width: 760px;
+            width: 100%;
+            background: rgba(255, 250, 245, 0.8);
+            backdrop-filter: blur(12px);
+            border-radius: 48px 48px 36px 36px;
+            box-shadow: 0 20px 40px rgba(180, 100, 140, 0.25), 0 6px 12px rgba(0,0,0,0.08);
+            padding: 32px 28px;
+            border: 2px solid #ffffff70;
+        }
 
-}
-</style>
+        /* шапка с блестками */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #b13e7c, #de5c9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+            text-shadow: 0 4px 10px #ffb3d9;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .header h1 span {
+            font-size: 2.6rem;
+            background: none;
+            -webkit-text-fill-color: initial;
+            color: #ff459a;
+            filter: drop-shadow(0 0 6px #ff9bc0);
+        }
+        .stats-badge {
+            background: #ffffffbb;
+            backdrop-filter: blur(4px);
+            padding: 12px 24px;
+            border-radius: 60px;
+            font-weight: 600;
+            border: 1.5px solid white;
+            box-shadow: 0 6px 14px #fbb6d2;
+            color: #831d53;
+            font-size: 1.2rem;
+            display: flex;
+            gap: 28px;
+        }
+        .stats-badge div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .stats-badge .count-number {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1;
+            color: #b13e7c;
+        }
+
+        /* кнопка добавить + форма */
+        .add-section {
+            background: #fff2fb;
+            border-radius: 36px;
+            padding: 22px 22px 18px;
+            margin-bottom: 32px;
+            border: 2px dashed #ffa9d2;
+            box-shadow: inset 0 2px 8px #ffe2f0;
+        }
+        .add-form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+        }
+        .form-field {
+            flex: 1 1 160px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .form-field label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #a5386b;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            margin-left: 8px;
+        }
+        .form-field input, .form-field textarea {
+            background: white;
+            border: 2px solid #ffbfdf;
+            border-radius: 30px;
+            padding: 12px 18px;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.2s;
+            resize: vertical;
+            font-weight: 500;
+            color: #1e1e2a;
+        }
+        .form-field input:focus, .form-field textarea:focus {
+            border-color: #e86faa;
+            box-shadow: 0 0 0 4px #ffd9ec;
+        }
+        .form-field textarea {
+            min-height: 70px;
+            border-radius: 24px;
+        }
+        .btn-add {
+            background: #c64f8b;
+            border: none;
+            border-radius: 50px;
+            padding: 16px 28px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            cursor: pointer;
+            box-shadow: 0 12px 0 #782b53, 0 6px 18px #e49ec0;
+            transition: 0.1s linear;
+            border: 2px solid #ffb9df;
+            margin-top: 8px;
+        }
+        .btn-add:active {
+            transform: translateY(6px);
+            box-shadow: 0 6px 0 #782b53, 0 10px 20px #e49ec0;
+        }
+
+        /* списки по годам */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 36px;
+            margin-top: 30px;
+        }
+
+        .year-block {
+            background: #fff0f9cc;
+            border-radius: 40px 40px 28px 28px;
+            padding: 18px 18px 10px 18px;
+            border: 2px solid #ffffff;
+            backdrop-filter: blur(4px);
+        }
+
+        .year-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(145deg, #8b2f62, #be5282);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            padding: 0 12px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 0 #ffe1f0;
+        }
+
+        .fling-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .fling-item {
+            background: #ffffffde;
+            border-radius: 40px;
+            padding: 16px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 2px solid white;
+            box-shadow: 0 6px 14px #f0b8d5;
+            transition: 0.15s;
+            backdrop-filter: blur(4px);
+        }
+        .fling-item:hover {
+            transform: scale(1.01);
+            background: white;
+            border-color: #ffadd4;
+        }
+
+        .fling-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 10px 20px;
+        }
+        .fling-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #992962;
+            min-width: 110px;
+        }
+        .fling-age {
+            background: #fee1f0;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #af3773;
+            border: 1px solid #ffb7d6;
+        }
+        .fling-desc {
+            font-size: 1.05rem;
+            color: #37304b;
+            background: #fef2f9;
+            padding: 6px 18px;
+            border-radius: 30px;
+            max-width: 280px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            border: 1px solid #ffc1de;
+        }
+        .fling-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .delete-btn {
+            background: none;
+            border: 2px solid #ff98c3;
+            color: #b9497d;
+            font-size: 1.4rem;
+            font-weight: bold;
+            width: 46px;
+            height: 46px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.1s;
+            background: #ffffffc4;
+        }
+        .delete-btn:hover {
+            background: #ff4381;
+            border-color: #ff4381;
+            color: white;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: #b38ba1;
+            font-size: 1.2rem;
+            padding: 30px;
+            font-style: italic;
+            background: #fff2fb;
+            border-radius: 60px;
+            border: 2px dashed #fdb9da;
+        }
+
+        /* итоги */
+        .total-footer {
+            margin-top: 36px;
+            background: #ffe6f2;
+            border-radius: 40px;
+            padding: 24px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            border: 3px solid white;
+            font-weight: 600;
+            font-size: 1.4rem;
+            color: #962f64;
+            box-shadow: 0 4px 20px #fec7df;
+        }
+        .total-footer div {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .total-footer .big-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #be266b;
+            margin-right: 10px;
+        }
+        .bouquet-zero {
+            background: #a6426e;
+            color: white;
+            border-radius: 40px;
+            padding: 12px 32px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            box-shadow: inset 0 -3px 0 #572642;
+        }
+    </style>
 </head>
 <body>
+<div class="app-container" id="appContainer">
+    <div class="header">
+        <h1>
+            <span>✨</span> Интрижки Полины чек
+        </h1>
+        <div class="stats-badge" id="statsBadge">
+            <div>
+                <span class="count-number" id="totalFlingsCount">0</span>
+                <span>всего</span>
+            </div>
+            <div>
+                <span class="count-number" id="totalBouquets">0</span>
+                <span>букетов</span>
+            </div>
+        </div>
+    </div>
 
-<div class="container">
-  <div class="form">
-    <h2>Анкета 1</h2>
-    <label for="name1">Имя:</label><br>
-    <input type="text" id="name1" name="name1"><br>
-    <label for="email1">Email:</label><br>
-    <input type="email" id="email1" name="email1"><br>
-  </div>
-  <div class="form">
-    <h2>Анкета 2</h2>
-    <label for="name2">Имя:</label><br>
-    <input type="text" id="name2" name="name2"><br>
-    <label for="email2">Email:</label><br>
-    <input type="email" id="email2" name="email2"><br>
-  </div>
-  <div class="form">
-    <h2>Анкета 3</h2>
-    <label for="name3">Имя:</label><br>
-    <input type="text" id="name3" name="name3"><br>
-    <label for="email3">Email:</label><br>
-    <input type="email" id="email3" name="email3"><br>
-  </div>
+    <!-- Форма добавления -->
+    <div class="add-section">
+        <div class="add-form">
+            <div class="form-row">
+                <div class="form-field">
+                    <label>🗓️ Год</label>
+                    <input type="number" id="inputYear" placeholder="2026" value="2026">
+                </div>
+                <div class="form-field">
+                    <label>👤 Имя</label>
+                    <input type="text" id="inputName" placeholder="Крассовочник">
+                </div>
+                <div class="form-field">
+                    <label>🎂 Возраст</label>
+                    <input type="text" id="inputAge" placeholder="напиши или прочерк">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-field" style="flex:2;">
+                    <label>📝 Описание</label>
+                    <textarea id="inputDesc" placeholder="Кратко, но сочно...">✨ </textarea>
+                </div>
+            </div>
+            <button class="btn-add" id="addFlingBtn">
+                <span>➕</span> Добавить интрижку
+            </button>
+        </div>
+    </div>
+
+    <!-- Динамические списки по годам -->
+    <div id="timelineContainer" class="timeline"></div>
+
+    <!-- Блок итогов (дублирует шапку, но крупно) -->
+    <div class="total-footer">
+        <div>
+            <span class="big-number" id="footerTotalCount">0</span> интрижек
+        </div>
+        <div>
+            <span class="bouquet-zero" id="footerBouquetDisplay">💐 0 букетов</span>
+        </div>
+    </div>
 </div>
 
 <script>
-const container = document.querySelector('.container');
-const forms = document.querySelectorAll('.form');
-let currentFormIndex = 0;
-const formWidth = forms[0].offsetWidth; // Get width of a single form
+    (function() {
+        // ---- данные по умолчанию (как в примере, плюс немного фантазии для 2026) ----
+        const DEFAULT_FLINGS = [
+            { year: 2025, name: 'Бурят', age: '—', desc: 'Бурят' },
+            { year: 2025, name: 'Обоссыш', age: '—', desc: 'Обоссыш' },
+            { year: 2025, name: 'Солдатик', age: '—', desc: 'подгон према' },
+            { year: 2025, name: 'Сеня', age: '—', desc: 'анаша кайфуй душа' },
+            { year: 2025, name: 'Никита', age: '—', desc: '2 букета' },
+            { year: 2025, name: 'Тимофей', age: '—', desc: '—' },
+            { year: 2026, name: 'Крассовочник', age: '—', desc: 'крассовочник' },
+            { year: 2026, name: 'Леха', age: '—', desc: 'Леха' },
+            { year: 2026, name: 'Дима', age: '—', desc: 'Дима' }
+        ];
 
-function scrollToForm(index) {
-  if (index >= 0 && index < forms.length) {
-    container.style.transform = `translateX(-${index * formWidth}px)`;
-    currentFormIndex = index;
-  }
-}
+        // хранилище
+        let flings = [];
 
-// Swipe handling (you can replace this with any other navigation method)
-container.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].clientX;
-});
+        // загрузить из localStorage или использовать default
+        function loadFlings() {
+            const stored = localStorage.getItem('polina_flings');
+            if (stored) {
+                try {
+                    flings = JSON.parse(stored);
+                } catch (e) {
+                    flings = [...DEFAULT_FLINGS];
+                }
+            } else {
+                flings = [...DEFAULT_FLINGS];
+            }
+            // сортировка: сначала по году (новые сверху? но в примере 2025 выше, сделаем по убыванию (2026 потом 2025) но лучше сохранять как есть с группировкой)
+            // нам нужен порядок: сперва 2025, потом 2026 — чтобы как в примере. сортируем по году возрастание
+            flings.sort((a,b) => a.year - b.year);
+        }
 
-container.addEventListener('touchmove', (e) => {
-    e.preventDefault();
-});
+        function saveFlings() {
+            localStorage.setItem('polina_flings', JSON.stringify(flings));
+        }
 
+        // helpers
+        function countBouquets() {
+            // считаем записи, у которых в описании или имени есть "букет" (без учета регистра)
+            return flings.filter(f => 
+                (f.desc && f.desc.toLowerCase().includes('букет')) || 
+                (f.name && f.name.toLowerCase().includes('букет'))
+            ).length;
+        }
 
-container.addEventListener('touchend', (e) => {
-    let endX = e.changedTouches[0].clientX;
-    let diffX = startX - endX;
+        function render() {
+            const container = document.getElementById('timelineContainer');
+            const totalFlings = flings.length;
+            const totalBouquets = countBouquets();
 
-    if (diffX > 50) {
-        scrollToForm(currentFormIndex + 1);
-    } else if (diffX < -50) {
-        scrollToForm(currentFormIndex - 1);
-    }
-});
+            // обновить цифры в шапке и футере
+            document.getElementById('totalFlingsCount').innerText = totalFlings;
+            document.getElementById('totalBouquets').innerText = totalBouquets;
+            document.getElementById('footerTotalCount').innerText = totalFlings;
+            document.getElementById('footerBouquetDisplay').innerHTML = `💐 ${totalBouquets} букетов`;
 
+            // группируем по годам
+            const groups = {};
+            flings.forEach(f => {
+                const y = f.year;
+                if (!groups[y]) groups[y] = [];
+                groups[y].push(f);
+            });
+
+            // года по возрастанию (2025, 2026 ...) можно и по убыванию, но оставим как в примере (2025 выше)
+            const sortedYears = Object.keys(groups).map(Number).sort((a,b) => a - b);
+
+            let htmlStr = '';
+            if (sortedYears.length === 0) {
+                htmlStr = `<div class="empty-message">🥀 Пока ни одной интрижки... Добавь первую!</div>`;
+            } else {
+                for (let year of sortedYears) {
+                    const items = groups[year];
+                    items.sort((a,b) => {
+                        // можно сохранять порядок добавления, но для красоты по имени
+                        return a.name.localeCompare(b.name);
+                    });
+                    let itemsHtml = '';
+                    items.forEach((fling, idx) => {
+                        // нам нужно найти глобальный индекс для удаления
+                        const globalIndex = flings.findIndex(f => 
+                            f.year === fling.year && f.name === fling.name && f.age === fling.age && f.desc === fling.desc
+                        );
+                        // на случай дубликатов добавим запасной ключ (не критично)
+                        const uniqueKey = `f-${year}-${idx}-${Date.now()}-${Math.random()}`;
+                        itemsHtml += `
+                            <li class="fling-item" data-index="${globalIndex}" data-key="${uniqueKey}">
+                                <div class="fling-content">
+                                    <span class="fling-name">${escapeHtml(fling.name)}</span>
+                                    <span class="fling-age">${escapeHtml(fling.age || '—')}</span>
+                                    <span class="fling-desc" title="${escapeHtml(fling.desc)}">${escapeHtml(fling.desc) || '—'}</span>
+                                </div>
+                                <div class="fling-actions">
+                                    <button class="delete-btn" data-index="${globalIndex}" title="удалить интрижку">✕</button>
+                                </div>
+                            </li>
+                        `;
+                    });
+
+                    htmlStr += `
+                        <div class="year-block">
+                            <div class="year-title">🗓️ ${year}</div>
+                            <ul class="fling-list">
+                                ${itemsHtml}
+                            </ul>
+                        </div>
+                    `;
+                }
+            }
+            container.innerHTML = htmlStr;
+
+            // навесить обработчики на кнопки удаления
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const index = btn.getAttribute('data-index');
+                    if (index !== null && index !== '') {
+                        deleteFling(parseInt(index));
+                    }
+                });
+            });
+        }
+
+        // простая защита от XSS
+        function escapeHtml(unsafe) {
+            if (unsafe === undefined || unsafe === null) return '';
+            return String(unsafe)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        // удаление по индексу
+        function deleteFling(index) {
+            if (index >= 0 && index < flings.length) {
+                flings.splice(index, 1);
+                saveFlings();
+                render();
+            }
+        }
+
+        // добавление новой
+        function addFling(event) {
+            event.preventDefault();
+
+            const yearInput = document.getElementById('inputYear');
+            const nameInput = document.getElementById('inputName');
+            const ageInput = document.getElementById('inputAge');
+            const descInput = document.getElementById('inputDesc');
+
+            let year = parseInt(yearInput.value.trim());
+            const name = nameInput.value.trim();
+            const age = ageInput.value.trim() || '—';
+            let desc = descInput.value.trim();
+
+            if (isNaN(year) || year < 1900 || year > 2100) {
+                year = 2026; // fallback
+            }
+            if (!name) {
+                alert('Имя обязательно (хотя бы символ)');
+                return;
+            }
+            if (!desc) desc = '—';
+
+            // добавить
+            flings.push({
+                year: year,
+                name: name,
+                age: age,
+                desc: desc
+            });
+
+            // сортировка по году
+            flings.sort((a,b) => a.year - b.year);
+
+            saveFlings();
+            render();
+
+            // очистить форму (кроме года, оставим тот же год для удобства)
+            nameInput.value = '';
+            ageInput.value = '';
+            descInput.value = '✨ ';
+        }
+
+        // инициализация
+        loadFlings();
+        render();
+
+        // кнопка добавления
+        document.getElementById('addFlingBtn').addEventListener('click', addFling);
+
+        // также можно на enter в полях (но необязательно)
+        const inputs = document.querySelectorAll('input, textarea');
+        inputs.forEach(inp => {
+            inp.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    document.getElementById('addFlingBtn').click();
+                }
+            });
+        });
+
+        // маленький хак для красивого дефолта описания
+        if (document.getElementById('inputDesc').value === '') {
+            document.getElementById('inputDesc').value = '✨ ';
+        }
+    })();
 </script>
-
 </body>
 </html>
