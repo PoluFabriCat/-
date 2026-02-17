@@ -3,194 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Полины интрижки ✨</title>
+    <title>💕 Дневник Полины | интрижки + грамоты</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
-            background: linear-gradient(145deg, #f9eef7 0%, #f1d9e6 100%);
+            background: linear-gradient(165deg, #fbe8f0 0%, #f8d0e3 100%);
             min-height: 100vh;
-            padding: 24px 16px;
+            padding: 32px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* главная карточка */
         .app-container {
-            max-width: 760px;
+            max-width: 880px;
             width: 100%;
-            background: rgba(255, 250, 245, 0.8);
-            backdrop-filter: blur(12px);
-            border-radius: 48px 48px 36px 36px;
-            box-shadow: 0 20px 40px rgba(180, 100, 140, 0.25), 0 6px 12px rgba(0,0,0,0.08);
-            padding: 32px 28px;
-            border: 2px solid #ffffff70;
+            background: rgba(255, 250, 250, 0.75);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-radius: 64px 64px 48px 48px;
+            box-shadow: 0 30px 50px rgba(170, 80, 120, 0.25), 0 0 0 2px rgba(255, 255, 255, 0.7) inset;
+            padding: 36px 32px;
+            border: 1px solid rgba(255, 220, 240, 0.6);
         }
 
-        /* шапка с блестками */
         .header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 28px;
+            margin-bottom: 36px;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 20px;
         }
+
         .header h1 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #b13e7c, #de5c9d);
+            font-size: 2.4rem;
+            font-weight: 700;
+            background: linear-gradient(145deg, #b83b74, #d45a96);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
-            text-shadow: 0 4px 10px #ffb3d9;
+            letter-spacing: -0.02em;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 16px;
         }
-        .header h1 span {
-            font-size: 2.6rem;
-            background: none;
-            -webkit-text-fill-color: initial;
-            color: #ff459a;
-            filter: drop-shadow(0 0 6px #ff9bc0);
-        }
+
         .stats-badge {
-            background: #ffffffbb;
-            backdrop-filter: blur(4px);
-            padding: 12px 24px;
-            border-radius: 60px;
-            font-weight: 600;
-            border: 1.5px solid white;
-            box-shadow: 0 6px 14px #fbb6d2;
-            color: #831d53;
-            font-size: 1.2rem;
+            background: #ffffffd9;
+            padding: 12px 28px;
+            border-radius: 120px;
+            border: 2px solid white;
+            box-shadow: 0 8px 22px #f5b0cf;
             display: flex;
-            gap: 28px;
+            gap: 36px;
         }
-        .stats-badge div {
+
+        .stat-item {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        .stats-badge .count-number {
-            font-size: 2rem;
+
+        .stat-number {
+            font-size: 2.2rem;
             font-weight: 800;
             line-height: 1;
             color: #b13e7c;
         }
 
-        /* кнопка добавить + форма */
-        .add-section {
-            background: #fff2fb;
-            border-radius: 36px;
-            padding: 22px 22px 18px;
-            margin-bottom: 32px;
-            border: 2px dashed #ffa9d2;
-            box-shadow: inset 0 2px 8px #ffe2f0;
-        }
-        .add-form {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-        .form-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            align-items: center;
-        }
-        .form-field {
-            flex: 1 1 160px;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-        .form-field label {
-            font-size: 0.8rem;
+        .stat-label {
+            font-size: 0.9rem;
             font-weight: 600;
             color: #a5386b;
             text-transform: uppercase;
-            letter-spacing: 0.4px;
-            margin-left: 8px;
+            letter-spacing: 0.3px;
         }
-        .form-field input, .form-field textarea {
-            background: white;
-            border: 2px solid #ffbfdf;
-            border-radius: 30px;
-            padding: 12px 18px;
-            font-size: 1rem;
-            outline: none;
-            transition: 0.2s;
-            resize: vertical;
-            font-weight: 500;
-            color: #1e1e2a;
-        }
-        .form-field input:focus, .form-field textarea:focus {
-            border-color: #e86faa;
-            box-shadow: 0 0 0 4px #ffd9ec;
-        }
-        .form-field textarea {
-            min-height: 70px;
-            border-radius: 24px;
-        }
-        .btn-add {
-            background: #c64f8b;
+
+        .open-form-btn {
+            background: #c45a92;
             border: none;
-            border-radius: 50px;
-            padding: 16px 28px;
+            border-radius: 120px;
+            padding: 20px 30px;
             font-size: 1.3rem;
-            font-weight: 700;
+            font-weight: 600;
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
             cursor: pointer;
-            box-shadow: 0 12px 0 #782b53, 0 6px 18px #e49ec0;
-            transition: 0.1s linear;
-            border: 2px solid #ffb9df;
-            margin-top: 8px;
-        }
-        .btn-add:active {
-            transform: translateY(6px);
-            box-shadow: 0 6px 0 #782b53, 0 10px 20px #e49ec0;
-        }
-
-        /* списки по годам */
-        .timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 36px;
-            margin-top: 30px;
-        }
-
-        .year-block {
-            background: #fff0f9cc;
-            border-radius: 40px 40px 28px 28px;
-            padding: 18px 18px 10px 18px;
-            border: 2px solid #ffffff;
+            box-shadow: 0 10px 0 #813e64, 0 10px 28px #e7a2c3;
+            transition: all 0.12s ease;
+            border: 2px solid #ffc1e3;
+            width: 100%;
+            margin-bottom: 32px;
             backdrop-filter: blur(4px);
         }
 
-        .year-title {
+        .open-form-btn:active {
+            transform: translateY(6px);
+            box-shadow: 0 4px 0 #813e64, 0 12px 30px #e7a2c3;
+        }
+
+        .add-section {
+            background: #ffffffdd;
+            backdrop-filter: blur(8px);
+            border-radius: 60px 60px 40px 40px;
+            padding: 28px 30px;
+            margin-bottom: 40px;
+            border: 2px solid #ffbfdf;
+            box-shadow: 0 15px 30px #f2b2d3;
+            display: none;
+        }
+
+        .add-section.visible {
+            display: block;
+            animation: slideDown 0.25s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .add-form {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 18px;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-field label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #a52d69;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-left: 12px;
+        }
+
+        .form-field input, .form-field textarea, .form-field select {
+            background: white;
+            border: 2px solid #ffb8da;
+            border-radius: 40px;
+            padding: 14px 20px;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.2s;
+            color: #2a1b26;
+            font-weight: 500;
+        }
+
+        .form-field textarea {
+            border-radius: 28px;
+            min-height: 85px;
+            resize: vertical;
+        }
+
+        .form-field input:focus, .form-field textarea:focus, .form-field select:focus {
+            border-color: #e05193;
+            box-shadow: 0 0 0 4px #ffd5ea;
+        }
+
+        .btn-add {
+            background: #c45a92;
+            border: none;
+            border-radius: 120px;
+            padding: 18px 32px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            cursor: pointer;
+            box-shadow: 0 12px 0 #813e64, 0 8px 24px #e7a2c3;
+            transition: 0.1s;
+            border: 2px solid #ffbfe3;
+            margin-top: 12px;
+            width: fit-content;
+            min-width: 220px;
+        }
+
+        .btn-add:active {
+            transform: translateY(6px);
+            box-shadow: 0 6px 0 #813e64, 0 12px 28px #e7a2c3;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 42px;
+            margin: 30px 0 36px;
+        }
+
+        .year-block {
+            background: #ffffffde;
+            backdrop-filter: blur(4px);
+            border-radius: 48px 48px 36px 36px;
+            padding: 24px 22px 18px;
+            border: 2px solid white;
+            box-shadow: 0 12px 28px #e7b6d1;
+        }
+
+        .year-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 22px;
+            border-bottom: 3px dashed #feb0d5;
+            padding-bottom: 12px;
+        }
+
+        .year-icon {
             font-size: 2.2rem;
-            font-weight: 800;
-            background: linear-gradient(145deg, #8b2f62, #be5282);
+        }
+
+        .year-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(150deg, #a13064, #c44f86);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            display: inline-block;
-            padding: 0 12px;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-            text-shadow: 2px 2px 0 #ffe1f0;
         }
 
         .fling-list {
@@ -201,254 +253,377 @@
         }
 
         .fling-item {
-            background: #ffffffde;
-            border-radius: 40px;
-            padding: 16px 22px;
+            background: #ffffff;
+            border-radius: 100px 40px 40px 100px;
+            padding: 10px 10px 10px 18px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border: 2px solid white;
-            box-shadow: 0 6px 14px #f0b8d5;
-            transition: 0.15s;
-            backdrop-filter: blur(4px);
+            border: 2px solid #ffe1f0;
+            box-shadow: 0 4px 12px #f8c3dd;
+            transition: all 0.15s;
         }
+
         .fling-item:hover {
-            transform: scale(1.01);
-            background: white;
-            border-color: #ffadd4;
+            border-color: #f796c7;
+            transform: translateX(4px);
+            box-shadow: 0 8px 16px #f2a9cc;
         }
 
         .fling-content {
             display: flex;
             flex-wrap: wrap;
-            align-items: baseline;
-            gap: 10px 20px;
+            align-items: center;
+            gap: 12px 16px;
+            flex: 1;
         }
+
+        .type-badge {
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 6px 16px;
+            border-radius: 60px;
+            background: #ffe4f2;
+            color: #ac3870;
+            border: 1px solid #ffb1d9;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
         .fling-name {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #992962;
+            color: #9e2b68;
             min-width: 110px;
         }
+
         .fling-age {
-            background: #fee1f0;
-            padding: 6px 16px;
-            border-radius: 40px;
-            font-size: 1rem;
+            background: #ffd9ec;
+            padding: 5px 16px;
+            border-radius: 60px;
+            font-size: 0.95rem;
             font-weight: 600;
-            color: #af3773;
-            border: 1px solid #ffb7d6;
-        }
-        .fling-desc {
-            font-size: 1.05rem;
-            color: #37304b;
-            background: #fef2f9;
-            padding: 6px 18px;
-            border-radius: 30px;
-            max-width: 280px;
+            color: #b63d79;
+            border: 1px solid #ffb2d7;
             white-space: nowrap;
+        }
+
+        .fling-desc {
+            font-size: 1rem;
+            color: #3d2c3a;
+            background: #fef2f9;
+            padding: 6px 20px;
+            border-radius: 60px;
+            border: 1px solid #ffbadb;
+            max-width: 280px;
             overflow: hidden;
             text-overflow: ellipsis;
-            border: 1px solid #ffc1de;
+            white-space: nowrap;
         }
+
         .fling-actions {
             display: flex;
-            gap: 10px;
             align-items: center;
+            gap: 6px;
         }
+
         .delete-btn {
-            background: none;
-            border: 2px solid #ff98c3;
-            color: #b9497d;
-            font-size: 1.4rem;
-            font-weight: bold;
-            width: 46px;
-            height: 46px;
-            border-radius: 30px;
+            background: #fdeff5;
+            border: 2px solid #ff8ebb;
+            color: #b13e72;
+            font-size: 1.5rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: 0.1s;
-            background: #ffffffc4;
+            transition: 0.15s;
+            font-weight: 400;
         }
+
         .delete-btn:hover {
-            background: #ff4381;
-            border-color: #ff4381;
+            background: #ff558c;
+            border-color: #ff558c;
             color: white;
+            transform: scale(1.02);
         }
 
         .empty-message {
             text-align: center;
-            color: #b38ba1;
-            font-size: 1.2rem;
-            padding: 30px;
-            font-style: italic;
-            background: #fff2fb;
-            border-radius: 60px;
-            border: 2px dashed #fdb9da;
+            color: #b882a3;
+            font-size: 1.3rem;
+            padding: 50px 30px;
+            background: #ffeef8;
+            border-radius: 80px;
+            border: 3px dashed #ffb7db;
         }
 
-        /* итоги */
         .total-footer {
-            margin-top: 36px;
-            background: #ffe6f2;
-            border-radius: 40px;
-            padding: 24px 30px;
+            margin-top: 42px;
+            background: #ffffffeb;
+            backdrop-filter: blur(4px);
+            border-radius: 120px;
+            padding: 24px 36px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 28px;
             border: 3px solid white;
-            font-weight: 600;
-            font-size: 1.4rem;
-            color: #962f64;
-            box-shadow: 0 4px 20px #fec7df;
+            box-shadow: 0 10px 30px #eab2cf;
         }
-        .total-footer div {
+
+        .footer-stat {
             display: flex;
-            align-items: center;
-            gap: 14px;
+            align-items: baseline;
+            gap: 10px;
         }
-        .total-footer .big-number {
+
+        .big-number {
             font-size: 2.8rem;
             font-weight: 800;
-            color: #be266b;
-            margin-right: 10px;
+            color: #c43a79;
         }
-        .bouquet-zero {
-            background: #a6426e;
+
+        .bouquet-block {
+            background: #b14077;
             color: white;
-            border-radius: 40px;
-            padding: 12px 32px;
+            border-radius: 100px;
+            padding: 14px 36px;
             font-size: 1.5rem;
             font-weight: 700;
-            box-shadow: inset 0 -3px 0 #572642;
+            box-shadow: 0 8px 0 #712a51;
+            border: 2px solid #ffb1da;
+        }
+
+        /* Modal confirm */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.2s;
+        }
+
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .confirm-modal {
+            background: #ffffffec;
+            backdrop-filter: blur(12px);
+            border-radius: 60px;
+            padding: 32px 36px;
+            max-width: 380px;
+            width: 90%;
+            text-align: center;
+            border: 3px solid white;
+            box-shadow: 0 30px 50px #b75f8f;
+            transform: scale(0.9);
+            transition: 0.2s;
+        }
+
+        .modal-overlay.show .confirm-modal {
+            transform: scale(1);
+        }
+
+        .confirm-modal h3 {
+            font-size: 2rem;
+            color: #ac2267;
+            margin-bottom: 16px;
+        }
+
+        .confirm-modal p {
+            font-size: 1.2rem;
+            color: #572e46;
+            margin-bottom: 32px;
+            font-weight: 500;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .modal-btn {
+            border: none;
+            border-radius: 60px;
+            padding: 16px 32px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.1s;
+            border: 2px solid transparent;
+        }
+
+        .modal-btn.confirm {
+            background: #ca598f;
+            color: white;
+            box-shadow: 0 8px 0 #81325b;
+        }
+
+        .modal-btn.confirm:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 #81325b;
+        }
+
+        .modal-btn.cancel {
+            background: #e7d0dd;
+            color: #802f5a;
+            border: 2px solid #ffb8da;
+        }
+
+        .modal-btn.cancel:active {
+            background: #dbbacf;
         }
     </style>
 </head>
 <body>
-<div class="app-container" id="appContainer">
+<div class="app-container">
     <div class="header">
-        <h1>
-            <span>✨</span> Интрижки Полины чек
-        </h1>
-        <div class="stats-badge" id="statsBadge">
-            <div>
-                <span class="count-number" id="totalFlingsCount">0</span>
-                <span>всего</span>
+        <h1><span>🌸</span> Дневник Полины</h1>
+        <div class="stats-badge">
+            <div class="stat-item">
+                <span class="stat-number" id="totalFlingsCount">0</span>
+                <span class="stat-label">интрижек</span>
             </div>
-            <div>
-                <span class="count-number" id="totalBouquets">0</span>
-                <span>букетов</span>
+            <div class="stat-item">
+                <span class="stat-number" id="totalBouquets">0</span>
+                <span class="stat-label">букетов</span>
             </div>
         </div>
     </div>
 
-    <!-- Форма добавления -->
-    <div class="add-section">
+    <button class="open-form-btn" id="showFormBtn">✨ Новая запись</button>
+
+    <div class="add-section" id="addSection">
         <div class="add-form">
-            <div class="form-row">
+            <div class="form-grid">
                 <div class="form-field">
-                    <label>🗓️ Год</label>
-                    <input type="number" id="inputYear" placeholder="2026" value="2026">
+                    <label>Тип</label>
+                    <select id="entryType">
+                        <option value="fling" selected>💋 Интрижка</option>
+                        <option value="certificate">📜 Грамота</option>
+                    </select>
                 </div>
                 <div class="form-field">
-                    <label>👤 Имя</label>
-                    <input type="text" id="inputName" placeholder="Крассовочник">
+                    <label>Год</label>
+                    <input type="number" id="inputYear" value="2026">
                 </div>
                 <div class="form-field">
-                    <label>🎂 Возраст</label>
-                    <input type="text" id="inputAge" placeholder="напиши или прочерк">
+                    <label>Имя</label>
+                    <input type="text" id="inputName" placeholder="Имя" autocomplete="off">
+                </div>
+                <div class="form-field">
+                    <label>Возраст</label>
+                    <input type="text" id="inputAge" placeholder="Например 20">
                 </div>
             </div>
-            <div class="form-row">
-                <div class="form-field" style="flex:2;">
-                    <label>📝 Описание</label>
-                    <textarea id="inputDesc" placeholder="Кратко, но сочно...">✨ </textarea>
-                </div>
+            <div class="form-field" style="grid-column: 1/-1;">
+                <label>Описание</label>
+                <textarea id="inputDesc" placeholder="Подробности..."></textarea>
             </div>
-            <button class="btn-add" id="addFlingBtn">
-                <span>➕</span> Добавить интрижку
-            </button>
+            <button class="btn-add" id="addFlingBtn"><span>💾</span> Сохранить</button>
         </div>
     </div>
 
-    <!-- Динамические списки по годам -->
     <div id="timelineContainer" class="timeline"></div>
 
-    <!-- Блок итогов (дублирует шапку, но крупно) -->
     <div class="total-footer">
-        <div>
-            <span class="big-number" id="footerTotalCount">0</span> интрижек
+        <div class="footer-stat">
+            <span class="big-number" id="footerTotalCount">0</span>
+            <span style="font-size: 1.5rem;">интрижек</span>
         </div>
-        <div>
-            <span class="bouquet-zero" id="footerBouquetDisplay">💐 0 букетов</span>
+        <div class="bouquet-block" id="footerBouquetDisplay">💐 0 букетов</div>
+    </div>
+</div>
+
+<!-- Modal подтверждения -->
+<div class="modal-overlay" id="confirmModal">
+    <div class="confirm-modal">
+        <h3>🥀 Точно?</h3>
+        <p>Удалить запись навсегда?</p>
+        <div class="modal-actions">
+            <button class="modal-btn confirm" id="confirmDelete">Да, удалить</button>
+            <button class="modal-btn cancel" id="cancelDelete">Передумала</button>
         </div>
     </div>
 </div>
 
 <script>
     (function() {
-        // ---- данные по умолчанию (как в примере, плюс немного фантазии для 2026) ----
+        // Начальные данные
         const DEFAULT_FLINGS = [
-            { year: 2025, name: 'Бурят', age: '—', desc: 'Бурят' },
-            { year: 2025, name: 'Обоссыш', age: '—', desc: 'Обоссыш' },
-            { year: 2025, name: 'Солдатик', age: '—', desc: 'подгон према' },
-            { year: 2025, name: 'Сеня', age: '—', desc: 'анаша кайфуй душа' },
-            { year: 2025, name: 'Никита', age: '—', desc: '2 букета' },
-            { year: 2025, name: 'Тимофей', age: '—', desc: '—' },
-            { year: 2026, name: 'Крассовочник', age: '—', desc: 'крассовочник' },
-            { year: 2026, name: 'Леха', age: '—', desc: 'Леха' },
-            { year: 2026, name: 'Дима', age: '—', desc: 'Дима' }
+            { year: 2025, name: 'Бурят', age: '', desc: '', type: 'fling' },
+            { year: 2025, name: 'Обоссыш', age: '', desc: '', type: 'fling' },
+            { year: 2025, name: 'Солдатик', age: '', desc: 'подгон према', type: 'fling' },
+            { year: 2025, name: 'Сеня', age: '', desc: 'анаша кайфуй душа', type: 'fling' },
+            { year: 2025, name: 'Никита', age: '', desc: '2 букета', type: 'fling' },
+            { year: 2026, name: 'Крассовочник', age: '', desc: '', type: 'fling' },
+            { year: 2025, name: 'Тимофей', age: '', desc: 'грамота за участие', type: 'certificate' },
+            { year: 2025, name: 'Дима', age: '', desc: 'грамота за участие', type: 'certificate' },
+            { year: 2025, name: 'Леша', age: '', desc: 'грамота за участие', type: 'certificate' }
         ];
 
-        // хранилище
         let flings = [];
+        let pendingDeleteIndex = null;
 
-        // загрузить из localStorage или использовать default
         function loadFlings() {
-            const stored = localStorage.getItem('polina_flings');
+            const stored = localStorage.getItem('polina_flings_v3');
             if (stored) {
-                try {
-                    flings = JSON.parse(stored);
-                } catch (e) {
-                    flings = [...DEFAULT_FLINGS];
-                }
+                try { flings = JSON.parse(stored); } catch { flings = [...DEFAULT_FLINGS]; }
             } else {
                 flings = [...DEFAULT_FLINGS];
             }
-            // сортировка: сначала по году (новые сверху? но в примере 2025 выше, сделаем по убыванию (2026 потом 2025) но лучше сохранять как есть с группировкой)
-            // нам нужен порядок: сперва 2025, потом 2026 — чтобы как в примере. сортируем по году возрастание
-            flings.sort((a,b) => a.year - b.year);
+            flings.sort((a,b) => b.year - a.year || a.name.localeCompare(b.name)); // новые года сверху
         }
+        loadFlings();
+        saveFlings();
 
         function saveFlings() {
-            localStorage.setItem('polina_flings', JSON.stringify(flings));
+            localStorage.setItem('polina_flings_v3', JSON.stringify(flings));
         }
 
-        // helpers
         function countBouquets() {
-            // считаем записи, у которых в описании или имени есть "букет" (без учета регистра)
             return flings.filter(f => 
-                (f.desc && f.desc.toLowerCase().includes('букет')) || 
-                (f.name && f.name.toLowerCase().includes('букет'))
+                f.type === 'fling' && 
+                ((f.desc && f.desc.toLowerCase().includes('букет')) || 
+                 (f.name && f.name.toLowerCase().includes('букет')))
             ).length;
+        }
+
+        function countFlingOnly() {
+            return flings.filter(f => f.type === 'fling').length;
+        }
+
+        function escapeHtml(t) {
+            if (!t) return '';
+            return String(t).replace(/[&<>"]/g, function(m) {
+                if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; if (m === '"') return '&quot;';
+                return m;
+            });
         }
 
         function render() {
             const container = document.getElementById('timelineContainer');
-            const totalFlings = flings.length;
+            const totalFlingsCount = countFlingOnly();
             const totalBouquets = countBouquets();
 
-            // обновить цифры в шапке и футере
-            document.getElementById('totalFlingsCount').innerText = totalFlings;
+            document.getElementById('totalFlingsCount').innerText = totalFlingsCount;
             document.getElementById('totalBouquets').innerText = totalBouquets;
-            document.getElementById('footerTotalCount').innerText = totalFlings;
+            document.getElementById('footerTotalCount').innerText = totalFlingsCount;
             document.getElementById('footerBouquetDisplay').innerHTML = `💐 ${totalBouquets} букетов`;
 
-            // группируем по годам
             const groups = {};
             flings.forEach(f => {
                 const y = f.year;
@@ -456,36 +631,40 @@
                 groups[y].push(f);
             });
 
-            // года по возрастанию (2025, 2026 ...) можно и по убыванию, но оставим как в примере (2025 выше)
-            const sortedYears = Object.keys(groups).map(Number).sort((a,b) => a - b);
+            // сортировка годов по убыванию (новые сверху)
+            const sortedYears = Object.keys(groups).map(Number).sort((a,b) => b - a);
 
             let htmlStr = '';
             if (sortedYears.length === 0) {
-                htmlStr = `<div class="empty-message">🥀 Пока ни одной интрижки... Добавь первую!</div>`;
+                htmlStr = '<div class="empty-message">✨ Пока ничего нет...</div>';
             } else {
                 for (let year of sortedYears) {
                     const items = groups[year];
-                    items.sort((a,b) => {
-                        // можно сохранять порядок добавления, но для красоты по имени
-                        return a.name.localeCompare(b.name);
-                    });
                     let itemsHtml = '';
-                    items.forEach((fling, idx) => {
-                        // нам нужно найти глобальный индекс для удаления
+                    items.forEach((fling) => {
+                        // Находим точный индекс для удаления (первое совпадение)
                         const globalIndex = flings.findIndex(f => 
-                            f.year === fling.year && f.name === fling.name && f.age === fling.age && f.desc === fling.desc
+                            f.year === fling.year && 
+                            f.name === fling.name && 
+                            f.age === fling.age && 
+                            f.desc === fling.desc && 
+                            f.type === fling.type
                         );
-                        // на случай дубликатов добавим запасной ключ (не критично)
-                        const uniqueKey = `f-${year}-${idx}-${Date.now()}-${Math.random()}`;
+                        
+                        const typeLabel = fling.type === 'fling' ? '💋 интрижка' : '📜 грамота';
+                        const ageText = fling.age && fling.age.trim() !== '' && fling.age !== '—' ? fling.age : '';
+                        const descText = fling.desc && fling.desc !== '—' ? fling.desc : (fling.type === 'certificate' ? '📄 грамота' : '');
+                        
                         itemsHtml += `
-                            <li class="fling-item" data-index="${globalIndex}" data-key="${uniqueKey}">
+                            <li class="fling-item" data-index="${globalIndex}">
                                 <div class="fling-content">
+                                    <span class="type-badge">${typeLabel}</span>
                                     <span class="fling-name">${escapeHtml(fling.name)}</span>
-                                    <span class="fling-age">${escapeHtml(fling.age || '—')}</span>
-                                    <span class="fling-desc" title="${escapeHtml(fling.desc)}">${escapeHtml(fling.desc) || '—'}</span>
+                                    ${ageText ? `<span class="fling-age">🎂 ${escapeHtml(ageText)}</span>` : ''}
+                                    ${descText ? `<span class="fling-desc">${escapeHtml(descText)}</span>` : ''}
                                 </div>
                                 <div class="fling-actions">
-                                    <button class="delete-btn" data-index="${globalIndex}" title="удалить интрижку">✕</button>
+                                    <button class="delete-btn" data-index="${globalIndex}" title="Удалить">✕</button>
                                 </div>
                             </li>
                         `;
@@ -493,113 +672,97 @@
 
                     htmlStr += `
                         <div class="year-block">
-                            <div class="year-title">🗓️ ${year}</div>
-                            <ul class="fling-list">
-                                ${itemsHtml}
-                            </ul>
+                            <div class="year-header">
+                                <span class="year-icon">🗓️</span>
+                                <span class="year-title">${year}</span>
+                            </div>
+                            <ul class="fling-list">${itemsHtml}</ul>
                         </div>
                     `;
                 }
             }
             container.innerHTML = htmlStr;
 
-            // навесить обработчики на кнопки удаления
+            // Обработчики удаления с подтверждением
             document.querySelectorAll('.delete-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     e.stopPropagation();
                     const index = btn.getAttribute('data-index');
-                    if (index !== null && index !== '') {
-                        deleteFling(parseInt(index));
+                    if (index !== null) {
+                        pendingDeleteIndex = parseInt(index);
+                        document.getElementById('confirmModal').classList.add('show');
                     }
                 });
             });
         }
 
-        // простая защита от XSS
-        function escapeHtml(unsafe) {
-            if (unsafe === undefined || unsafe === null) return '';
-            return String(unsafe)
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
-        }
-
-        // удаление по индексу
-        function deleteFling(index) {
-            if (index >= 0 && index < flings.length) {
-                flings.splice(index, 1);
+        function deleteFling() {
+            if (pendingDeleteIndex !== null && pendingDeleteIndex >= 0 && pendingDeleteIndex < flings.length) {
+                flings.splice(pendingDeleteIndex, 1);
                 saveFlings();
                 render();
             }
+            pendingDeleteIndex = null;
         }
 
-        // добавление новой
-        function addFling(event) {
-            event.preventDefault();
+        function addFling(e) {
+            e.preventDefault();
+            const type = document.getElementById('entryType').value;
+            const year = parseInt(document.getElementById('inputYear').value) || 2026;
+            const name = document.getElementById('inputName').value.trim();
+            const age = document.getElementById('inputAge').value.trim() || '';
+            let desc = document.getElementById('inputDesc').value.trim();
 
-            const yearInput = document.getElementById('inputYear');
-            const nameInput = document.getElementById('inputName');
-            const ageInput = document.getElementById('inputAge');
-            const descInput = document.getElementById('inputDesc');
-
-            let year = parseInt(yearInput.value.trim());
-            const name = nameInput.value.trim();
-            const age = ageInput.value.trim() || '—';
-            let desc = descInput.value.trim();
-
-            if (isNaN(year) || year < 1900 || year > 2100) {
-                year = 2026; // fallback
-            }
             if (!name) {
-                alert('Имя обязательно (хотя бы символ)');
+                alert('Введите имя');
                 return;
             }
-            if (!desc) desc = '—';
+            if (!desc) desc = '';
 
-            // добавить
             flings.push({
                 year: year,
                 name: name,
                 age: age,
-                desc: desc
+                desc: desc,
+                type: type
             });
 
-            // сортировка по году
-            flings.sort((a,b) => a.year - b.year);
-
+            flings.sort((a,b) => b.year - a.year || a.name.localeCompare(b.name)); // новые года сверху
             saveFlings();
             render();
 
-            // очистить форму (кроме года, оставим тот же год для удобства)
-            nameInput.value = '';
-            ageInput.value = '';
-            descInput.value = '✨ ';
+            document.getElementById('inputName').value = '';
+            document.getElementById('inputAge').value = '';
+            document.getElementById('inputDesc').value = '';
+            document.getElementById('addSection').classList.remove('visible');
         }
 
-        // инициализация
-        loadFlings();
-        render();
-
-        // кнопка добавления
-        document.getElementById('addFlingBtn').addEventListener('click', addFling);
-
-        // также можно на enter в полях (но необязательно)
-        const inputs = document.querySelectorAll('input, textarea');
-        inputs.forEach(inp => {
-            inp.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter' && !e.shiftKey) {
-                    e.preventDefault();
-                    document.getElementById('addFlingBtn').click();
-                }
-            });
+        // Модалка
+        document.getElementById('confirmDelete').addEventListener('click', () => {
+            deleteFling();
+            document.getElementById('confirmModal').classList.remove('show');
         });
 
-        // маленький хак для красивого дефолта описания
-        if (document.getElementById('inputDesc').value === '') {
-            document.getElementById('inputDesc').value = '✨ ';
-        }
+        document.getElementById('cancelDelete').addEventListener('click', () => {
+            pendingDeleteIndex = null;
+            document.getElementById('confirmModal').classList.remove('show');
+        });
+
+        document.getElementById('showFormBtn').addEventListener('click', () => {
+            document.getElementById('addSection').classList.toggle('visible');
+        });
+
+        document.getElementById('addFlingBtn').addEventListener('click', addFling);
+
+        // Закрыть модалку по клику на оверлей
+        document.getElementById('confirmModal').addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal-overlay')) {
+                pendingDeleteIndex = null;
+                document.getElementById('confirmModal').classList.remove('show');
+            }
+        });
+
+        render();
     })();
 </script>
 </body>
