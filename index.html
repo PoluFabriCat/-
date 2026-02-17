@@ -2,66 +2,66 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💕 Дневник Полины | интрижки + грамоты</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🌸 дневник Полины</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            background: linear-gradient(165deg, #fbe8f0 0%, #f8d0e3 100%);
+            background: #f9eef2; /* Базовый нежный фон */
             min-height: 100vh;
-            padding: 32px 20px;
+            padding: 16px 12px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        .app-container {
-            max-width: 880px;
+        .app-card {
+            max-width: 500px; /* Ограничиваем ширину для телефона */
             width: 100%;
-            background: rgba(255, 250, 250, 0.75);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border-radius: 64px 64px 48px 48px;
-            box-shadow: 0 30px 50px rgba(170, 80, 120, 0.25), 0 0 0 2px rgba(255, 255, 255, 0.7) inset;
-            padding: 36px 32px;
-            border: 1px solid rgba(255, 220, 240, 0.6);
+            background: rgba(255, 245, 250, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 36px 36px 32px 32px;
+            box-shadow: 0 10px 30px rgba(170, 80, 120, 0.2);
+            border: 1px solid rgba(255, 220, 240, 0.8);
+            padding: 24px 18px;
         }
 
+        /* Шапка */
         .header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 36px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 10px;
         }
 
         .header h1 {
-            font-size: 2.4rem;
+            font-size: 1.8rem;
             font-weight: 700;
             background: linear-gradient(145deg, #b83b74, #d45a96);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: -0.02em;
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 6px;
         }
 
         .stats-badge {
             background: #ffffffd9;
-            padding: 12px 28px;
-            border-radius: 120px;
-            border: 2px solid white;
-            box-shadow: 0 8px 22px #f5b0cf;
+            padding: 8px 16px;
+            border-radius: 40px;
+            border: 1.5px solid white;
+            box-shadow: 0 4px 12px #f5b0cf;
             display: flex;
-            gap: 36px;
+            gap: 20px;
         }
 
         .stat-item {
@@ -71,174 +71,169 @@
         }
 
         .stat-number {
-            font-size: 2.2rem;
+            font-size: 1.5rem;
             font-weight: 800;
             line-height: 1;
             color: #b13e7c;
         }
 
         .stat-label {
-            font-size: 0.9rem;
+            font-size: 0.7rem;
             font-weight: 600;
             color: #a5386b;
             text-transform: uppercase;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.2px;
         }
 
+        /* Кнопка "Новая запись" */
         .open-form-btn {
             background: #c45a92;
             border: none;
-            border-radius: 120px;
-            padding: 20px 30px;
-            font-size: 1.3rem;
+            border-radius: 60px;
+            padding: 14px 20px;
+            font-size: 1.1rem;
             font-weight: 600;
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            gap: 8px;
             cursor: pointer;
-            box-shadow: 0 10px 0 #813e64, 0 10px 28px #e7a2c3;
-            transition: all 0.12s ease;
-            border: 2px solid #ffc1e3;
+            box-shadow: 0 5px 0 #813e64, 0 8px 20px #e7a2c3;
+            transition: all 0.1s ease;
+            border: 1.5px solid #ffc1e3;
             width: 100%;
-            margin-bottom: 32px;
-            backdrop-filter: blur(4px);
+            margin-bottom: 24px;
         }
 
         .open-form-btn:active {
-            transform: translateY(6px);
-            box-shadow: 0 4px 0 #813e64, 0 12px 30px #e7a2c3;
+            transform: translateY(4px);
+            box-shadow: 0 1px 0 #813e64, 0 8px 18px #e7a2c3;
         }
 
+        /* Форма добавления */
         .add-section {
             background: #ffffffdd;
             backdrop-filter: blur(8px);
-            border-radius: 60px 60px 40px 40px;
-            padding: 28px 30px;
-            margin-bottom: 40px;
-            border: 2px solid #ffbfdf;
-            box-shadow: 0 15px 30px #f2b2d3;
+            border-radius: 36px;
+            padding: 20px 16px;
+            margin-bottom: 28px;
+            border: 1.5px solid #ffbfdf;
+            box-shadow: 0 8px 20px #f2b2d3;
             display: none;
         }
 
         .add-section.visible {
             display: block;
-            animation: slideDown 0.25s ease;
+            animation: fadeIn 0.2s;
         }
 
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-15px); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .add-form {
+        .form-grid {
             display: flex;
             flex-direction: column;
-            gap: 22px;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-            gap: 18px;
+            gap: 14px;
         }
 
         .form-field {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 4px;
         }
 
         .form-field label {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             font-weight: 700;
             color: #a52d69;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-left: 12px;
+            letter-spacing: 0.3px;
+            margin-left: 8px;
         }
 
         .form-field input, .form-field textarea, .form-field select {
             background: white;
-            border: 2px solid #ffb8da;
-            border-radius: 40px;
-            padding: 14px 20px;
-            font-size: 1rem;
+            border: 1.5px solid #ffb8da;
+            border-radius: 30px;
+            padding: 12px 16px;
+            font-size: 0.95rem;
             outline: none;
-            transition: 0.2s;
+            transition: 0.1s;
             color: #2a1b26;
             font-weight: 500;
         }
 
         .form-field textarea {
-            border-radius: 28px;
-            min-height: 85px;
+            border-radius: 24px;
+            min-height: 70px;
             resize: vertical;
         }
 
         .form-field input:focus, .form-field textarea:focus, .form-field select:focus {
             border-color: #e05193;
-            box-shadow: 0 0 0 4px #ffd5ea;
+            box-shadow: 0 0 0 3px #ffd5ea;
         }
 
         .btn-add {
             background: #c45a92;
             border: none;
-            border-radius: 120px;
-            padding: 18px 32px;
-            font-size: 1.3rem;
+            border-radius: 60px;
+            padding: 14px 20px;
+            font-size: 1.1rem;
             font-weight: 600;
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 14px;
+            gap: 8px;
             cursor: pointer;
-            box-shadow: 0 12px 0 #813e64, 0 8px 24px #e7a2c3;
+            box-shadow: 0 5px 0 #813e64, 0 6px 18px #e7a2c3;
             transition: 0.1s;
-            border: 2px solid #ffbfe3;
-            margin-top: 12px;
-            width: fit-content;
-            min-width: 220px;
+            border: 1.5px solid #ffbfe3;
+            margin-top: 8px;
+            width: 100%;
         }
 
         .btn-add:active {
-            transform: translateY(6px);
-            box-shadow: 0 6px 0 #813e64, 0 12px 28px #e7a2c3;
+            transform: translateY(4px);
+            box-shadow: 0 1px 0 #813e64, 0 8px 18px #e7a2c3;
         }
 
+        /* Лента записей */
         .timeline {
             display: flex;
             flex-direction: column;
-            gap: 42px;
-            margin: 30px 0 36px;
+            gap: 24px;
+            margin: 20px 0 24px;
         }
 
         .year-block {
             background: #ffffffde;
             backdrop-filter: blur(4px);
-            border-radius: 48px 48px 36px 36px;
-            padding: 24px 22px 18px;
-            border: 2px solid white;
-            box-shadow: 0 12px 28px #e7b6d1;
+            border-radius: 30px;
+            padding: 18px 16px 12px;
+            border: 1.5px solid white;
+            box-shadow: 0 6px 16px #e7b6d1;
         }
 
         .year-header {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 22px;
-            border-bottom: 3px dashed #feb0d5;
-            padding-bottom: 12px;
+            gap: 8px;
+            margin-bottom: 16px;
+            border-bottom: 2px dashed #feb0d5;
+            padding-bottom: 8px;
         }
 
         .year-icon {
-            font-size: 2.2rem;
+            font-size: 1.6rem;
         }
 
         .year-title {
-            font-size: 2.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
             background: linear-gradient(150deg, #a13064, #c44f86);
             -webkit-background-clip: text;
@@ -249,59 +244,58 @@
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 8px;
         }
 
         .fling-item {
             background: #ffffff;
-            border-radius: 100px 40px 40px 100px;
-            padding: 10px 10px 10px 18px;
+            border-radius: 40px 20px 20px 40px;
+            padding: 8px 8px 8px 14px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border: 2px solid #ffe1f0;
-            box-shadow: 0 4px 12px #f8c3dd;
-            transition: all 0.15s;
+            border: 1.5px solid #ffe1f0;
+            box-shadow: 0 2px 8px #f8c3dd;
+            transition: all 0.1s;
         }
 
-        .fling-item:hover {
+        .fling-item:active {
             border-color: #f796c7;
-            transform: translateX(4px);
-            box-shadow: 0 8px 16px #f2a9cc;
+            transform: translateX(2px);
+            box-shadow: 0 4px 10px #f2a9cc;
         }
 
         .fling-content {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 12px 16px;
+            gap: 6px 10px;
             flex: 1;
         }
 
         .type-badge {
-            font-size: 0.75rem;
-            font-weight: 800;
-            padding: 6px 16px;
-            border-radius: 60px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 30px;
             background: #ffe4f2;
             color: #ac3870;
             border: 1px solid #ffb1d9;
             text-transform: uppercase;
-            letter-spacing: 0.4px;
+            letter-spacing: 0.3px;
         }
 
         .fling-name {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: #9e2b68;
-            min-width: 110px;
         }
 
         .fling-age {
             background: #ffd9ec;
-            padding: 5px 16px;
-            border-radius: 60px;
-            font-size: 0.95rem;
+            padding: 3px 12px;
+            border-radius: 30px;
+            font-size: 0.8rem;
             font-weight: 600;
             color: #b63d79;
             border: 1px solid #ffb2d7;
@@ -309,80 +303,75 @@
         }
 
         .fling-desc {
-            font-size: 1rem;
+            font-size: 0.85rem;
             color: #3d2c3a;
             background: #fef2f9;
-            padding: 6px 20px;
-            border-radius: 60px;
+            padding: 4px 16px;
+            border-radius: 30px;
             border: 1px solid #ffbadb;
-            max-width: 280px;
+            max-width: 200px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
         }
 
-        .fling-actions {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
         .delete-btn {
             background: #fdeff5;
-            border: 2px solid #ff8ebb;
+            border: 1.5px solid #ff8ebb;
             color: #b13e72;
-            font-size: 1.5rem;
-            width: 48px;
-            height: 48px;
-            border-radius: 60px;
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: 0.15s;
+            transition: 0.1s;
             font-weight: 400;
+            flex-shrink: 0;
         }
 
-        .delete-btn:hover {
+        .delete-btn:active {
             background: #ff558c;
             border-color: #ff558c;
             color: white;
-            transform: scale(1.02);
         }
 
         .empty-message {
             text-align: center;
             color: #b882a3;
-            font-size: 1.3rem;
-            padding: 50px 30px;
+            font-size: 1.1rem;
+            padding: 40px 20px;
             background: #ffeef8;
-            border-radius: 80px;
-            border: 3px dashed #ffb7db;
+            border-radius: 40px;
+            border: 2px dashed #ffb7db;
         }
 
+        /* Нижний блок */
         .total-footer {
-            margin-top: 42px;
+            margin-top: 24px;
             background: #ffffffeb;
             backdrop-filter: blur(4px);
-            border-radius: 120px;
-            padding: 24px 36px;
+            border-radius: 60px;
+            padding: 16px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 28px;
-            border: 3px solid white;
-            box-shadow: 0 10px 30px #eab2cf;
+            gap: 16px;
+            border: 2px solid white;
+            box-shadow: 0 6px 20px #eab2cf;
         }
 
         .footer-stat {
             display: flex;
             align-items: baseline;
-            gap: 10px;
+            gap: 6px;
         }
 
         .big-number {
-            font-size: 2.8rem;
+            font-size: 2rem;
             font-weight: 800;
             color: #c43a79;
         }
@@ -390,15 +379,15 @@
         .bouquet-block {
             background: #b14077;
             color: white;
-            border-radius: 100px;
-            padding: 14px 36px;
-            font-size: 1.5rem;
+            border-radius: 60px;
+            padding: 10px 24px;
+            font-size: 1.2rem;
             font-weight: 700;
-            box-shadow: 0 8px 0 #712a51;
-            border: 2px solid #ffb1da;
+            box-shadow: 0 4px 0 #712a51;
+            border: 1.5px solid #ffb1da;
         }
 
-        /* Modal confirm */
+        /* Модалка подтверждения */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -410,7 +399,8 @@
             z-index: 1000;
             opacity: 0;
             visibility: hidden;
-            transition: 0.2s;
+            transition: 0.15s;
+            padding: 16px;
         }
 
         .modal-overlay.show {
@@ -421,15 +411,15 @@
         .confirm-modal {
             background: #ffffffec;
             backdrop-filter: blur(12px);
-            border-radius: 60px;
-            padding: 32px 36px;
-            max-width: 380px;
-            width: 90%;
+            border-radius: 48px;
+            padding: 28px 24px;
+            max-width: 340px;
+            width: 100%;
             text-align: center;
-            border: 3px solid white;
-            box-shadow: 0 30px 50px #b75f8f;
-            transform: scale(0.9);
-            transition: 0.2s;
+            border: 2px solid white;
+            box-shadow: 0 20px 40px #b75f8f;
+            transform: scale(0.95);
+            transition: 0.15s;
         }
 
         .modal-overlay.show .confirm-modal {
@@ -437,50 +427,51 @@
         }
 
         .confirm-modal h3 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: #ac2267;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         .confirm-modal p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #572e46;
-            margin-bottom: 32px;
+            margin-bottom: 28px;
             font-weight: 500;
         }
 
         .modal-actions {
             display: flex;
-            gap: 16px;
+            gap: 12px;
             justify-content: center;
         }
 
         .modal-btn {
             border: none;
-            border-radius: 60px;
-            padding: 16px 32px;
-            font-size: 1.2rem;
+            border-radius: 50px;
+            padding: 14px 28px;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             transition: 0.1s;
-            border: 2px solid transparent;
+            border: 1.5px solid transparent;
+            flex: 1;
         }
 
         .modal-btn.confirm {
             background: #ca598f;
             color: white;
-            box-shadow: 0 8px 0 #81325b;
+            box-shadow: 0 4px 0 #81325b;
         }
 
         .modal-btn.confirm:active {
-            transform: translateY(4px);
-            box-shadow: 0 4px 0 #81325b;
+            transform: translateY(3px);
+            box-shadow: 0 1px 0 #81325b;
         }
 
         .modal-btn.cancel {
             background: #e7d0dd;
             color: #802f5a;
-            border: 2px solid #ffb8da;
+            border: 1.5px solid #ffb8da;
         }
 
         .modal-btn.cancel:active {
@@ -489,17 +480,17 @@
     </style>
 </head>
 <body>
-<div class="app-container">
+<div class="app-card">
     <div class="header">
-        <h1><span>🌸</span> Дневник Полины</h1>
+        <h1>🌸 дневник Полины</h1>
         <div class="stats-badge">
             <div class="stat-item">
                 <span class="stat-number" id="totalFlingsCount">0</span>
-                <span class="stat-label">интрижек</span>
+                <span class="stat-label">интрижки</span>
             </div>
             <div class="stat-item">
                 <span class="stat-number" id="totalBouquets">0</span>
-                <span class="stat-label">букетов</span>
+                <span class="stat-label">букеты</span>
             </div>
         </div>
     </div>
@@ -507,29 +498,27 @@
     <button class="open-form-btn" id="showFormBtn">✨ Новая запись</button>
 
     <div class="add-section" id="addSection">
-        <div class="add-form">
-            <div class="form-grid">
-                <div class="form-field">
-                    <label>Тип</label>
-                    <select id="entryType">
-                        <option value="fling" selected>💋 Интрижка</option>
-                        <option value="certificate">📜 Грамота</option>
-                    </select>
-                </div>
-                <div class="form-field">
-                    <label>Год</label>
-                    <input type="number" id="inputYear" value="2026">
-                </div>
-                <div class="form-field">
-                    <label>Имя</label>
-                    <input type="text" id="inputName" placeholder="Имя" autocomplete="off">
-                </div>
-                <div class="form-field">
-                    <label>Возраст</label>
-                    <input type="text" id="inputAge" placeholder="Например 20">
-                </div>
+        <div class="form-grid">
+            <div class="form-field">
+                <label>Тип</label>
+                <select id="entryType">
+                    <option value="fling" selected>💋 Интрижка</option>
+                    <option value="certificate">📜 Грамота</option>
+                </select>
             </div>
-            <div class="form-field" style="grid-column: 1/-1;">
+            <div class="form-field">
+                <label>Год</label>
+                <input type="number" id="inputYear" value="2026" placeholder="2026">
+            </div>
+            <div class="form-field">
+                <label>Имя</label>
+                <input type="text" id="inputName" placeholder="Имя" autocomplete="off">
+            </div>
+            <div class="form-field">
+                <label>Возраст</label>
+                <input type="text" id="inputAge" placeholder="Например 20">
+            </div>
+            <div class="form-field">
                 <label>Описание</label>
                 <textarea id="inputDesc" placeholder="Подробности..."></textarea>
             </div>
@@ -542,20 +531,20 @@
     <div class="total-footer">
         <div class="footer-stat">
             <span class="big-number" id="footerTotalCount">0</span>
-            <span style="font-size: 1.5rem;">интрижек</span>
+            <span style="font-size: 1.2rem;">интрижек</span>
         </div>
-        <div class="bouquet-block" id="footerBouquetDisplay">💐 0 букетов</div>
+        <div class="bouquet-block" id="footerBouquetDisplay">💐 0</div>
     </div>
 </div>
 
-<!-- Modal подтверждения -->
+<!-- Модалка подтверждения -->
 <div class="modal-overlay" id="confirmModal">
     <div class="confirm-modal">
         <h3>🥀 Точно?</h3>
-        <p>Удалить запись навсегда?</p>
+        <p>Удалить запись?</p>
         <div class="modal-actions">
-            <button class="modal-btn confirm" id="confirmDelete">Да, удалить</button>
-            <button class="modal-btn cancel" id="cancelDelete">Передумала</button>
+            <button class="modal-btn confirm" id="confirmDelete">Да</button>
+            <button class="modal-btn cancel" id="cancelDelete">Нет</button>
         </div>
     </div>
 </div>
@@ -579,19 +568,19 @@
         let pendingDeleteIndex = null;
 
         function loadFlings() {
-            const stored = localStorage.getItem('polina_flings_v3');
+            const stored = localStorage.getItem('polina_flings_tg');
             if (stored) {
                 try { flings = JSON.parse(stored); } catch { flings = [...DEFAULT_FLINGS]; }
             } else {
                 flings = [...DEFAULT_FLINGS];
             }
-            flings.sort((a,b) => b.year - a.year || a.name.localeCompare(b.name)); // новые года сверху
+            flings.sort((a,b) => b.year - a.year || a.name.localeCompare(b.name));
         }
         loadFlings();
         saveFlings();
 
         function saveFlings() {
-            localStorage.setItem('polina_flings_v3', JSON.stringify(flings));
+            localStorage.setItem('polina_flings_tg', JSON.stringify(flings));
         }
 
         function countBouquets() {
@@ -622,7 +611,7 @@
             document.getElementById('totalFlingsCount').innerText = totalFlingsCount;
             document.getElementById('totalBouquets').innerText = totalBouquets;
             document.getElementById('footerTotalCount').innerText = totalFlingsCount;
-            document.getElementById('footerBouquetDisplay').innerHTML = `💐 ${totalBouquets} букетов`;
+            document.getElementById('footerBouquetDisplay').innerHTML = `💐 ${totalBouquets}`;
 
             const groups = {};
             flings.forEach(f => {
@@ -631,18 +620,16 @@
                 groups[y].push(f);
             });
 
-            // сортировка годов по убыванию (новые сверху)
             const sortedYears = Object.keys(groups).map(Number).sort((a,b) => b - a);
 
             let htmlStr = '';
             if (sortedYears.length === 0) {
-                htmlStr = '<div class="empty-message">✨ Пока ничего нет...</div>';
+                htmlStr = '<div class="empty-message">✨ Пока пусто...</div>';
             } else {
                 for (let year of sortedYears) {
                     const items = groups[year];
                     let itemsHtml = '';
                     items.forEach((fling) => {
-                        // Находим точный индекс для удаления (первое совпадение)
                         const globalIndex = flings.findIndex(f => 
                             f.year === fling.year && 
                             f.name === fling.name && 
@@ -683,7 +670,6 @@
             }
             container.innerHTML = htmlStr;
 
-            // Обработчики удаления с подтверждением
             document.querySelectorAll('.delete-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     e.stopPropagation();
@@ -719,15 +705,8 @@
             }
             if (!desc) desc = '';
 
-            flings.push({
-                year: year,
-                name: name,
-                age: age,
-                desc: desc,
-                type: type
-            });
-
-            flings.sort((a,b) => b.year - a.year || a.name.localeCompare(b.name)); // новые года сверху
+            flings.push({ year, name, age, desc, type });
+            flings.sort((a,b) => b.year - a.year || a.name.localeCompare(b.name));
             saveFlings();
             render();
 
@@ -737,7 +716,6 @@
             document.getElementById('addSection').classList.remove('visible');
         }
 
-        // Модалка
         document.getElementById('confirmDelete').addEventListener('click', () => {
             deleteFling();
             document.getElementById('confirmModal').classList.remove('show');
@@ -754,7 +732,6 @@
 
         document.getElementById('addFlingBtn').addEventListener('click', addFling);
 
-        // Закрыть модалку по клику на оверлей
         document.getElementById('confirmModal').addEventListener('click', (e) => {
             if (e.target.classList.contains('modal-overlay')) {
                 pendingDeleteIndex = null;
